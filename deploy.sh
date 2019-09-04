@@ -1,3 +1,5 @@
+set -e
+
 docker build -t malimccalla/multi-client:latest -t malimccalla/multi-client:$SHA -f ./client/Dockerfile ./client
 docker build -t malimccalla/multi-server:latest -t malimccalla/multi-server:$SHA -f ./server/Dockerfile ./server
 docker build -t malimccalla/multi-worker:latest -t malimccalla/multi-worker:$SHA -f ./worker/Dockerfile ./worker
