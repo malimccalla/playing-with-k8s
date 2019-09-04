@@ -18,7 +18,7 @@ before_install:
   - docker build -t malimccalla/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true malimccalla/docker-react npm run test
+  - docker run -e CI=true malimccalla/react-test npm run test
 
 deploy:
   provider: script
