@@ -25,6 +25,6 @@ jobs:
         with:
           tag_name: ${{ github.sha }}
           release_name: ${{ github.sha }}
-          body: 'New staging release 🚀'
+          body: New staging release 🚀
           draft: false
           prerelease: true
