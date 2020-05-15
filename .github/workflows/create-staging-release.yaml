@@ -15,7 +15,7 @@ jobs:
 
       - name: Get version number
         id: version-number
-        run: echo ::set-env name=version::$(node -pe "require('./package.json').version")
+        run: echo ::set-env name=version::$(node -pe "require('../package.json').version")
 
       - name: Create Release
         id: create_release
