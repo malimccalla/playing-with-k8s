@@ -12,7 +12,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        run: echo ::set-env name=version::$(node -pe "require('./package.json').version")
+
+      - name: Get version number
+      - run: echo ::set-env name=version::$(node -pe "require('./package.json').version")
 
       - name: Create Release
         id: create_release
