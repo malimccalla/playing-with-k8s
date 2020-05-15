@@ -23,7 +23,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          tag_name: ${{ steps.version-number.outputs.body }}
-          release_name: ${{ steps.version-number.outputs.body }}
+          tag_name: ${{ github.sha }}
+          release_name: ${{ github.sha }}
+          body: 'New staging release 🚀'
           draft: false
           prerelease: true
