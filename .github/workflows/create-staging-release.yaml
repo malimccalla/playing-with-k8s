@@ -13,10 +13,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Get version number
-        id: version-number
-        run: echo "::set-output name=body::$(cat VERSION)"
-
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -25,9 +21,5 @@ jobs:
         with:
           tag_name: ${{ github.sha }}
           release_name: ${{ github.sha }}
-          body: |
-            Changes in this Release
-            - Rip emoji
-            - Need to allow emojis
           draft: false
           prerelease: true
