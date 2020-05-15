@@ -24,11 +24,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         run: |
-          git config --global user.name 'Mali McCalla'
-          git config --global user.email 'malimccalla@users.noreply.github.com'
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git config --global user.email "malimccalla@gmail.com"
+          git config --global user.name "Mali McCalla"
           git commit -am "Bump version number"
-          git push
+          git push origin master
 
       - name: Create Release
         id: create_release
