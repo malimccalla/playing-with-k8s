@@ -12,6 +12,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Get changes since Master
+        id: changes-since-master
+        run: echo "::set-output name=hashes::$(git rev-list $(git rev-parse origin/master)..HEAD)"
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -20,6 +25,6 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
-          body: See commits for changes
+          body: ${{ steps.changes-since-master.outputs.hashes }}
           draft: false
           prerelease: true
