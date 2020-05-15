@@ -1,0 +1,23 @@
+{
+  "name": "playing-with-k8s",
+  "version": "1.1.6",
+  "description": "",
+  "main": "bump-version.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/malimccalla/playing-with-k8s.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/malimccalla/playing-with-k8s/issues"
+  },
+  "homepage": "https://github.com/malimccalla/playing-with-k8s#readme",
+  "dependencies": {
+    "json": "^9.0.6"
+  }
+}
