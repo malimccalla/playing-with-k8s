@@ -12,22 +12,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: Bump version nummber
-        run: node ./bump-version
-
-      - name: Get version nummber
-        id: version-number
         run: echo ::set-env name=version::$(node -pe "require('./package.json').version")
-
-      - name: Bump version number
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-        run: |
-          git config --global user.email "malimccalla@gmail.com"
-          git config --global user.name "Mali McCalla"
-          git commit -am "Bump version number"
-          git push origin master
 
       - name: Create Release
         id: create_release
@@ -36,6 +21,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
           tag_name: ${{ steps.version-number.outputs.version }}
-          release_name: v
+          release_name: ${{ steps.version-number.outputs.version }}
           draft: false
           prerelease: true
