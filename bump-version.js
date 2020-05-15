@@ -1,15 +1,15 @@
 const package = require('./package.json');
 const fs = require('fs');
 
-package.version = '0.0.2';
+const currentVersion = package.version;
 
-fs.writeFileSync('./package.json', JSON.stringify(package));
+const newVersion =
+  currentVersion.split('.')[0] +
+  '.' +
+  currentVersion.split('.')[1] +
+  '.' +
+  (parseInt(currentVersion.split('.')[2]) + 1);
 
-// const newVersion =
-//   currentVersion.split('.')[0] +
-//   '.' +
-//   currentVersion.split('.')[1] +
-//   '.' +
-//   (parseInt(currentVersion.split('.')[2]) + 1);
+package.version = newVersion;
 
-// console.log(newVersion);
+fs.writeFileSync('./package.json', JSON.stringify(package, null, 2));

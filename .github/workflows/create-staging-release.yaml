@@ -13,9 +13,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Bump version nummber
+        id: changes-since-master
+        run: node ./bump-version
+
       - name: Get version nummber
         id: changes-since-master
-        run: echo "::set-output name=hashes::$(git rev-list $(git rev-parse origin/master)..HEAD)"
+        run: echo ::set-env name=version::$(node -pe "require('./package.json').version")
+
+      - name: Bump version number
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        run: |
+          git commit -am "Bump version number"
+          git push
 
       - name: Create Release
         id: create_release
