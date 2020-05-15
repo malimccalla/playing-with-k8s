@@ -8,6 +8,6 @@
 
 #### Checklist
 
-- [] Increased the version number. e.g 1.0.1 -> 1.0.2
-- [] Formatted code with prettier
-- [] Check tests pass locally
+- [ ] Increased the version number. e.g `v1.0.1` -> `v1.0.2`
+- [ ] Formatted code with prettier
+- [ ] Tests pass locally
