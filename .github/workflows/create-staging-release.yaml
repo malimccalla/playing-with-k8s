@@ -14,11 +14,10 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Bump version nummber
-        id: changes-since-master
         run: node ./bump-version
 
       - name: Get version nummber
-        id: changes-since-master
+        id: version-number
         run: echo ::set-env name=version::$(node -pe "require('./package.json').version")
 
       - name: Bump version number
@@ -34,7 +33,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          tag_name: v0.0.1
+          tag_name: ${{ steps.version-number.outputs.version }}
           release_name: v
           draft: false
           prerelease: true
