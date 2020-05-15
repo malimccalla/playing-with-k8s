@@ -25,6 +25,9 @@ jobs:
         with:
           tag_name: ${{ github.sha }}
           release_name: ${{ github.sha }}
-          body: New staging release live
+          body: |
+            Changes in this Release
+            - Rip emoji
+            - Need to allow emojis
           draft: false
           prerelease: true
