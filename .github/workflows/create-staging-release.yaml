@@ -15,7 +15,11 @@ jobs:
 
       - name: Get version number
         id: version-number
-        run: echo "::set-output name=body::$(git rev-parse --short=7 HEAD)"
+        run: echo "::set-output name=version::$(git rev-parse --short=7 HEAD)"
+
+      - name: Get date
+        id: release-date-time
+        run: echo "::set-output name=date::$(date +'%Y.%m.%d-%H:%M')"
 
       - name: Create Release
         id: create_release
@@ -23,8 +27,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          tag_name: ${{ steps.version-number.outputs.body }}-staging
-          release_name: Staging release $(date +'%Y.%m.%d-%H:%M')
-          body: "This release refers to HEAD at ${{ steps.version-number.outputs.body }}"
+          tag_name: ${{ steps.version-number.outputs.version }}-staging
+          release_name: Staging release ${{ steps.release-date-time.outputs.date }}
+          body: "This release refers to HEAD at ${{ steps.version-number.outputs.version }}"
           draft: false
           prerelease: true
