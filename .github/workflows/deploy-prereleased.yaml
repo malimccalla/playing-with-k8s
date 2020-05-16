@@ -1,0 +1,13 @@
+on:
+  release:
+    types: [prereleased]
+
+name: Deploy prereleased
+
+jobs:
+  build:
+    name: Create Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        run: echo "Hello im running in prereleased"
