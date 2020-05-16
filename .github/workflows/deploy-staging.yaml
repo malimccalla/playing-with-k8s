@@ -3,10 +3,10 @@ on:
     branches:
       - master
 
-name: Create Release
+name: Deploy to staging
 
 jobs:
-  build:
+  create-github-release:
     name: Create Release
     runs-on: ubuntu-latest
     steps:
