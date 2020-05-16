@@ -28,7 +28,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
           tag_name: ${{ steps.version-number.outputs.version }}-staging
-          release_name: Staging release ${{ steps.release-date-time.outputs.date }}
+          release_name: ${{ steps.version-number.outputs.version }}-staging
           body: "This release refers to HEAD at ${{ steps.version-number.outputs.version }}"
           draft: false
           prerelease: true
