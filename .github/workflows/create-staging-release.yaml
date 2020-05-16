@@ -17,10 +17,6 @@ jobs:
         id: version-number
         run: echo "::set-output name=version::$(git rev-parse --short=7 HEAD)"
 
-      - name: Get date
-        id: release-date-time
-        run: echo "::set-output name=date::$(date +'%Y.%m.%d-%H:%M')"
-
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
